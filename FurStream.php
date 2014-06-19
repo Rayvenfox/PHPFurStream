@@ -3,8 +3,8 @@ namespace FurStream
 {
     class APIConnection
     {
-        private $endpoint = 'https://furstre.am/API/v2/';
-        private $key = '';
+        require_once 'FurStream.php';
+        $con = new FurStream\APIConnection('12345');
 
         public function __construct($key)
         {
@@ -39,7 +39,7 @@ namespace FurStream
         }
         public function get_user_summaries($users)
         {
-            $resp = $this->call("IUsers", "GetUserSummaries", array('users' => $users));
+            $users = $con->get_user_summaries(array('Dreae', 'JackTail'));
             $users = array();
             foreach($resp->users as $k)
             {
